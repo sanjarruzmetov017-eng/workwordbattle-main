@@ -1,0 +1,63 @@
+{% extends "admin/index.html" %}
+{% load admin_stats %}
+
+{% block content %}
+  {% admin_stats as stats %}
+  <div class="module" style="margin-bottom: 24px;">
+    <h2>System Snapshot</h2>
+    <div style="display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));">
+      <div style="background: #0f0f0f; border: 1px solid #232323; border-radius: 16px; padding: 16px;">
+        <div style="font-size: 10px; text-transform: uppercase; letter-spacing: 0.25em; color: #6f6f6f;">Total Users</div>
+        <div style="font-size: 28px; font-weight: 700; color: #ffffff;">{{ stats.users_total }}</div>
+      </div>
+      <div style="background: #0f0f0f; border: 1px solid #232323; border-radius: 16px; padding: 16px;">
+        <div style="font-size: 10px; text-transform: uppercase; letter-spacing: 0.25em; color: #6f6f6f;">Active Users</div>
+        <div style="font-size: 28px; font-weight: 700; color: #8cc63f;">{{ stats.users_active }}</div>
+      </div>
+      <div style="background: #0f0f0f; border: 1px solid #232323; border-radius: 16px; padding: 16px;">
+        <div style="font-size: 10px; text-transform: uppercase; letter-spacing: 0.25em; color: #6f6f6f;">Staff Users</div>
+        <div style="font-size: 28px; font-weight: 700; color: #ffffff;">{{ stats.users_staff }}</div>
+      </div>
+      <div style="background: #0f0f0f; border: 1px solid #232323; border-radius: 16px; padding: 16px;">
+        <div style="font-size: 10px; text-transform: uppercase; letter-spacing: 0.25em; color: #6f6f6f;">Profiles</div>
+        <div style="font-size: 28px; font-weight: 700; color: #ffffff;">{{ stats.profiles_total }}</div>
+      </div>
+      <div style="background: #0f0f0f; border: 1px solid #232323; border-radius: 16px; padding: 16px;">
+        <div style="font-size: 10px; text-transform: uppercase; letter-spacing: 0.25em; color: #6f6f6f;">Vocab Entries</div>
+        <div style="font-size: 28px; font-weight: 700; color: #ffffff;">{{ stats.vocab_total }}</div>
+      </div>
+      <div style="background: #0f0f0f; border: 1px solid #232323; border-radius: 16px; padding: 16px;">
+        <div style="font-size: 10px; text-transform: uppercase; letter-spacing: 0.25em; color: #6f6f6f;">Average Elo</div>
+        <div style="font-size: 28px; font-weight: 700; color: #ffffff;">{{ stats.avg_elo }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="module" style="margin-bottom: 24px;">
+    <h2>Top Players (ELO)</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Player</th>
+          <th>ELO</th>
+          <th>Wins</th>
+          <th>Losses</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for p in stats.top_profiles %}
+          <tr>
+            <td>{{ p.user__username }}</td>
+            <td>{{ p.elo }}</td>
+            <td>{{ p.wins }}</td>
+            <td>{{ p.losses }}</td>
+          </tr>
+        {% empty %}
+          <tr><td colspan="4">No data yet.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  {{ block.super }}
+{% endblock %}

@@ -1,0 +1,202 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Word Battle | Elite Lexicon Arena</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Open Sans', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background: #111111;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* No scrollbar utility */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .auth-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #47289d;
+            position: relative;
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        .square {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.3s ease;
+        }
+
+        @media (max-width: 600px) {
+            .square {
+                transform: scale(0.7);
+            }
+        }
+        
+        @media (max-width: 400px) {
+            .square {
+                transform: scale(0.6);
+            }
+        }
+
+        .square i {
+            position: absolute;
+            inset: 0;
+            border: 2px solid #fff;
+            transition: 0.5s;
+        }
+
+        .square i:nth-child(1) {
+            border-radius: 38% 62% 63% 37% / 41% 44% 56% 59%;
+            animation: animate 6s linear infinite;
+            border-color: #ff0055;
+            filter: drop-shadow(0 0 10px #ff0055);
+        }
+
+        .square i:nth-child(2) {
+            border-radius: 41% 44% 56% 59%/38% 62% 63% 37%;
+            animation: animate 4s linear infinite;
+            border-color: #00ff00;
+            filter: drop-shadow(0 0 10px #00ff00);
+        }
+
+        .square i:nth-child(3) {
+            border-radius: 41% 44% 56% 59%/38% 62% 63% 37%;
+            animation: animate2 10s linear infinite;
+            border-color: #ffff00;
+            filter: drop-shadow(0 0 10px #ffff00);
+        }
+
+        @keyframes animate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes animate2 {
+            0% { transform: rotate(360deg); }
+            100% { transform: rotate(0deg); }
+        }
+
+        .login-inner {
+            position: absolute;
+            width: 300px;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 20px;
+            z-index: 10;
+        }
+
+        .login-inner h2 {
+            font-size: 2.5em;
+            color: #fff;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .inputBx {
+            position: relative;
+            width: 100%;
+        }
+
+        .inputBx input {
+            position: relative;
+            width: 100%;
+            padding: 12px 25px;
+            background: transparent;
+            border: 2px solid #fff;
+            border-radius: 40px;
+            font-size: 1.1em;
+            color: #fff;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .inputBx input[type="submit"] {
+            width: 100%;
+            background: linear-gradient(45deg, #ff357a, #fff172);
+            border: none;
+            cursor: pointer;
+            color: #fff;
+            font-weight: 600;
+            font-size: 1.2em;
+            margin-top: 10px;
+            padding: 12px;
+        }
+
+        .links {
+            position: relative;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 10px;
+        }
+
+        .links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+
+        .feature-card {
+            background: #222222;
+            border: 1px solid #333333;
+            transition: all 0.3s ease;
+        }
+        .feature-card:hover {
+            border-color: #8cc63f;
+            transform: translateY(-5px);
+        }
+
+        /* Mobile specific bottom padding to avoid nav overlap */
+        @media (max-width: 768px) {
+            .mobile-padding-bottom {
+                padding-bottom: 90px;
+            }
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.4",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.38.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/"
+  }
+}
+</script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+</body>
+</html>

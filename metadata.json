@@ -1,0 +1,5 @@
+{
+  "name": "Word Battle - The Ultimate Word Game",
+  "description": "A high-fidelity clone of a word chain strategy game where players compete in real-time or against AI to build word chains. Features ELO ranking, daily rewards, and an item shop.",
+  "requestFramePermissions": []
+}
